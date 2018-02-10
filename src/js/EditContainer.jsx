@@ -10,16 +10,15 @@ export default class EditProfileCard extends React.Component {
     this.state = {
       step: 1,
       dataJSON: undefined,
-      mode: "7_col",
+      mode: "col7",
       loading: true,
       publishing: false,
+      fetchingData: true,
       uiSchemaJSON: {},
       schemaJSON: undefined,
       optionalConfigJSON: {},
       optionalConfigSchemaJSON: undefined,
-      refLinkDetails: undefined
     }
-    this.refLinkSourcesURL = window.ref_link_sources_url;
     this.toggleMode = this.toggleMode.bind(this);
   }
 
@@ -38,7 +37,7 @@ export default class EditProfileCard extends React.Component {
   }
 
   componentDidMount() {
-    if (typeof this.props.dataURL === "string"){
+    if (this.state.fetchingData){
       axios.all([
         axios.get(this.props.dataURL),
         axios.get(this.props.schemaURL),
@@ -50,6 +49,7 @@ export default class EditProfileCard extends React.Component {
           let formData = card.data,
               stateVar;
           stateVar = {
+            fetchingData: false,
             dataJSON:formData,
             schemaJSON: schema.data,
             uiSchemaJSON: uiSchema.data,
@@ -171,7 +171,7 @@ export default class EditProfileCard extends React.Component {
   }
 
   render() {
-    if (this.state.schemaJSON === undefined) {
+    if (this.state.fetchingData) {
       return(<div>Loading</div>)
     } else {
       return (
@@ -199,26 +199,26 @@ export default class EditProfileCard extends React.Component {
               <div className="twelve wide column proto-card-preview proto-share-card-div">
                 <div className="protograph-menu-container">
                   <div className="ui compact menu">
-                    <a className={`item ${this.state.mode === '7_col' ? 'active' : ''}`}
-                      data-mode='7_col'
+                    <a className={`item ${this.state.mode === 'col7' ? 'active' : ''}`}
+                      data-mode='col7'
                       onClick={this.toggleMode}
                     >
                       7c
                     </a>
-                    <a className={`item ${this.state.mode === '4_col' ? 'active' : ''}`}
-                      data-mode='4_col'
+                    <a className={`item ${this.state.mode === 'col4' ? 'active' : ''}`}
+                      data-mode='col4'
                       onClick={this.toggleMode}
                     >
                       4c
                     </a>
-                    <a className={`item ${this.state.mode === '3_col' ? 'active' : ''}`}
-                      data-mode='3_col'
+                    <a className={`item ${this.state.mode === 'col3' ? 'active' : ''}`}
+                      data-mode='col3'
                       onClick={this.toggleMode}
                     >
                       3c
                     </a>
-                    <a className={`item ${this.state.mode === '2_col' ? 'active' : ''}`}
-                      data-mode='2_col'
+                    <a className={`item ${this.state.mode === 'col2' ? 'active' : ''}`}
+                      data-mode='col2'
                       onClick={this.toggleMode}
                     >
                       2c
@@ -233,7 +233,6 @@ export default class EditProfileCard extends React.Component {
                     schemaJSON={this.state.schemaJSON}
                     optionalConfigJSON={this.state.optionalConfigJSON}
                     optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
-                    linkDetails={this.state.refLinkDetails}
                   />
                 </div>
               </div>

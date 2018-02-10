@@ -18,22 +18,22 @@ ProtoGraph.Card.toProfile.prototype.getData = function (data) {
 }
 
 ProtoGraph.Card.toProfile.prototype.renderCol7= function (data) {
-  this.mode = '7_col';
+  this.mode = 'col7';
   this.render();
 }
 
 ProtoGraph.Card.toProfile.prototype.renderCol4= function (data) {
-  this.mode = '4_col';
+  this.mode = 'col4';
   this.render();
 }
 
 ProtoGraph.Card.toProfile.prototype.renderCol3= function (data) {
-  this.mode = '3_col';
+  this.mode = 'col3';
   this.render();
 }
 
 ProtoGraph.Card.toProfile.prototype.renderCol2= function (data) {
-  this.mode = '2_col';
+  this.mode = 'col2';
   this.render();
 }
 

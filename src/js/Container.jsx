@@ -221,13 +221,13 @@ export default class toProfileCard extends React.Component {
   }
   render() {
     switch(this.props.mode) {
-      case '7_col':
+      case 'col7':
         return this.renderCol7();
-      case '4_col':
+      case 'col4':
         return this.renderCol4();
-      case '3_col':
+      case 'col3':
         return this.renderCol3();
-      case '2_col':
+      case 'col2':
         return this.renderCol2();
     }
   }
