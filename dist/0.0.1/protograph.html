@@ -57,23 +57,20 @@
 
       function renderWithMode(mode) {
         switch(mode){
-          case 'col16':
-            x.renderSixteenCol();
-            break;
           case 'col7':
-            x.renderSevenCol();
+            x.renderCol7();
             break;
           case 'col4':
-            x.renderFourCol();
+            x.renderCol4();
             break;
           case 'col3':
-            x.renderThreeCol();
+            x.renderCol3();
             break;
           case 'col2':
-            x.renderTwoCol();
+            x.renderCol2();
             break;
           default:
-            x.renderSevenCol();
+            x.renderCol7();
             break;
         }
       }

@@ -15,7 +15,9 @@
 .proto-image-area>img{
 	width:100%;
 }
-
+.proto-detail-value>a{
+  text-decoration: none;
+}
 .proto-profile-card-title {
 	font-size: 18px;
 	color: black;
