@@ -17,6 +17,18 @@
   border-radius: 50px;
 }
 
+.col-2 {
+  width: 140px; }
+
+.col-3 {
+  width: 220px; }
+
+.col-4 {
+  width: 300px; }
+
+.col-7 {
+  width: 540px; }
+  
 .form-layout .proto-card-form {
   padding-top: 15px;
 }

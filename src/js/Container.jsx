@@ -94,7 +94,6 @@ export default class toProfileCard extends React.Component {
       )
     }else{
       let data = this.state.dataJSON.data;
-      console.log(data);
       return(
         <div className="col-7 proto-to-profile-card">
           <div className="proto-profile-card-title">
@@ -110,7 +109,7 @@ export default class toProfileCard extends React.Component {
                 return(
                   <div className = "proto-profile-details" key={i}>
                     <div className = "proto-detail-key">{data.key}</div>
-                    <div className = "proto-detail-value">{data.value.match(urlRegex()) ?<a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
+                    <div className = "proto-detail-value">{(data.value.match(urlRegex()) && (data.value.split('http://').length > 1 || data.value.split('https://').length > 1)) ? <a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
                   </div>
                 )
               })
@@ -143,7 +142,7 @@ export default class toProfileCard extends React.Component {
                 return(
                   <div className = "proto-profile-details" key={i}>
                     <div className = "proto-detail-key">{data.key}</div>
-                    <div className = "proto-detail-value">{data.value.match(urlRegex()) ?<a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
+                    <div className = "proto-detail-value">{(data.value.match(urlRegex()) && (data.value.split('http://').length > 1 || data.value.split('https://').length > 1)) ? <a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
                   </div>
                 )
               })
@@ -176,7 +175,7 @@ export default class toProfileCard extends React.Component {
                 return(
                   <div className = "proto-profile-details" key={i}>
                     <div className = "proto-detail-key">{data.key}</div>
-                    <div className = "proto-detail-value">{data.value.match(urlRegex()) ?<a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
+                    <div className = "proto-detail-value">{(data.value.match(urlRegex()) && (data.value.split('http://').length > 1 || data.value.split('https://').length > 1)) ? <a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
                   </div>
                 )
               })
@@ -209,7 +208,7 @@ export default class toProfileCard extends React.Component {
                 return(
                   <div className = "proto-profile-details" key={i}>
                     <div className = "proto-detail-key">{data.key}</div>
-                    <div className = "proto-detail-value">{data.value.match(urlRegex()) ?<a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
+                    <div className = "proto-detail-value">{(data.value.match(urlRegex()) && (data.value.split('http://').length > 1 || data.value.split('https://').length > 1)) ? <a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
                   </div>
                 )
               })
