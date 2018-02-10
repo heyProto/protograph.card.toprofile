@@ -7,10 +7,7 @@ export default class toProfileCard extends React.Component {
     super(props)
     let stateVar = {
       fetchingData: true,
-      dataJSON: {
-        card_data: {},
-        configs: {}
-      },
+      dataJSON: undefined,
       schemaJSON: undefined,
       domain: undefined,
       optionalConfigJSON: {},
@@ -52,10 +49,7 @@ export default class toProfileCard extends React.Component {
       ]).then(axios.spread((card, schema, opt_config, opt_config_schema, site_configs) => {
         let stateVar = {
           fetchingData: false,
-          dataJSON: {
-            card_data: card.data,
-            configs: opt_config.data
-          },
+          dataJSON: card.data,
           schemaJSON: schema.data,
           optionalConfigJSON: opt_config.data,
           optionalConfigSchemaJSON: opt_config_schema.data,
@@ -90,32 +84,33 @@ export default class toProfileCard extends React.Component {
   }
 
   handleClick(){
-    window.open(this.state.dataJSON.card_data.data.url,'_top');
+    window.open(this.state.dataJSON.data.url,'_top');
   }
 
-  renderSevenCol(){
+  renderCol7(){
     if(!this.state.schemaJSON){
       return(
         <div>Loading</div>
       )
     }else{
-      let data = this.state.dataJSON.card_data.data;
+      let data = this.state.dataJSON.data;
+      console.log(data);
       return(
-        <div className="col-7 to-profile-card">
-          <div className="profile-card-title">
+        <div className="col-7 proto-to-profile-card">
+          <div className="proto-profile-card-title">
             {data.title}
           </div>
-          <div className="image-area">
+          <div className="proto-image-area">
             {data.image_url && <img src={data.image_url}/>}
           </div>
           <p>{data.description}</p>
-          <div className="profile-details">
+          <div className="proto-profile-details">
             {
               data.details.map((data,i)=>{
                 return(
-                  <div className = "profile-detail" key={i}>
-                    <div className = "detail-key">{data.key}</div>
-                    <div className = "detail-value">{data.value.match(urlRegex()) ?<a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
+                  <div className = "proto-profile-details" key={i}>
+                    <div className = "proto-detail-key">{data.key}</div>
+                    <div className = "proto-detail-value">{data.value.match(urlRegex()) ?<a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
                   </div>
                 )
               })
@@ -126,29 +121,29 @@ export default class toProfileCard extends React.Component {
     }
   }
 
-  renderFourCol(){
+  renderCol4(){
     if(!this.state.schemaJSON){
       return(
         <div>Loading</div>
       )
     }else{
-      let data = this.state.dataJSON.card_data.data;
+      let data = this.state.dataJSON.data;
       return(
-        <div className="col-4 to-profile-card">
-          <div className="profile-card-title">
+        <div className="col-4 proto-to-profile-card">
+          <div className="proto-profile-card-title">
             {data.title}
           </div>
-          <div className="image-area">
+          <div className="proto-image-area">
             {data.image_url && <img src={data.image_url}/>}
           </div>
           <p>{data.description}</p>
-          <div className="profile-details">
+          <div className="proto-profile-details">
             {
               data.details.map((data,i)=>{
                 return(
-                  <div className = "profile-detail" key={i}>
-                    <div className = "detail-key">{data.key}</div>
-                    <div className = "detail-value">{data.value.match(urlRegex()) ?<a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
+                  <div className = "proto-profile-details" key={i}>
+                    <div className = "proto-detail-key">{data.key}</div>
+                    <div className = "proto-detail-value">{data.value.match(urlRegex()) ?<a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
                   </div>
                 )
               })
@@ -159,29 +154,29 @@ export default class toProfileCard extends React.Component {
     }
   }
 
-  renderThreeCol(){
+  renderCol3(){
     if(!this.state.schemaJSON){
       return(
         <div>Loading</div>
       )
     }else{
-      let data = this.state.dataJSON.card_data.data;
+      let data = this.state.dataJSON.data;
       return(
-        <div className="col-3 to-profile-card">
-          <div className="profile-card-title">
+        <div className="col-3 proto-to-profile-card">
+          <div className="proto-profile-card-title">
             {data.title}
           </div>
-          <div className="image-area">
+          <div className="proto-image-area">
             {data.image_url && <img src={data.image_url}/>}
           </div>
           <p>{data.description}</p>
-          <div className="profile-details">
+          <div className="proto-profile-details">
             {
               data.details.map((data,i)=>{
                 return(
-                  <div className = "profile-detail" key={i}>
-                    <div className = "detail-key">{data.key}</div>
-                    <div className = "detail-value">{data.value.match(urlRegex()) ?<a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
+                  <div className = "proto-profile-details" key={i}>
+                    <div className = "proto-detail-key">{data.key}</div>
+                    <div className = "proto-detail-value">{data.value.match(urlRegex()) ?<a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
                   </div>
                 )
               })
@@ -192,29 +187,29 @@ export default class toProfileCard extends React.Component {
     }
   }
 
-  renderTwoCol(){
+  renderCol2(){
     if(!this.state.schemaJSON){
       return(
         <div>Loading</div>
       )
     }else{
-      let data = this.state.dataJSON.card_data.data;
+      let data = this.state.dataJSON.data;
       return(
-        <div className="col-2 to-profile-card">
-          <div className="profile-card-title">
+        <div className="col-2 proto-to-profile-card">
+          <div className="proto-profile-card-title">
             {data.title}
           </div>
-          <div className="image-area">
+          <div className="proto-image-area">
             {data.image_url && <img src={data.image_url}/>}
           </div>
           <p>{data.description}</p>
-          <div className="profile-details">
+          <div className="proto-profile-details">
             {
               data.details.map((data,i)=>{
                 return(
-                  <div className = "profile-detail" key={i}>
-                    <div className = "detail-key">{data.key}</div>
-                    <div className = "detail-value">{data.value.match(urlRegex()) ?<a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
+                  <div className = "proto-profile-details" key={i}>
+                    <div className = "proto-detail-key">{data.key}</div>
+                    <div className = "proto-detail-value">{data.value.match(urlRegex()) ?<a target="_blank" href={data.value}>{data.value}</a> : data.value}</div>
                   </div>
                 )
               })
@@ -227,13 +222,13 @@ export default class toProfileCard extends React.Component {
   render() {
     switch(this.props.mode) {
       case '7_col':
-        return this.renderSevenCol();
+        return this.renderCol7();
       case '4_col':
-        return this.renderFourCol();
+        return this.renderCol4();
       case '3_col':
-        return this.renderThreeCol();
+        return this.renderCol3();
       case '2_col':
-        return this.renderTwoCol();
+        return this.renderCol2();
     }
   }
 }

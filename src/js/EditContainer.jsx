@@ -9,10 +9,7 @@ export default class EditProfileCard extends React.Component {
     super(props)
     this.state = {
       step: 1,
-      dataJSON: {
-        card_data: {},
-        configs: {}
-      },
+      dataJSON: undefined,
       mode: "7_col",
       loading: true,
       publishing: false,
@@ -30,10 +27,10 @@ export default class EditProfileCard extends React.Component {
     let data = this.state.dataJSON;
     let getDataObj = {
       step: this.state.step,
-      dataJSON: data.card_data,
+      dataJSON: data,
       schemaJSON: this.state.schemaJSON,
       uiSchemaJSON: this.state.uiSchemaJSON,
-      optionalConfigJSON: this.state.dataJSON.configs,
+      optionalConfigJSON: this.state.optionalConfigJSON,
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
     getDataObj["name"] = getDataObj.dataJSON.data.headline.substr(0,225); // Reduces the name to ensure the slug does not get too long
@@ -53,10 +50,7 @@ export default class EditProfileCard extends React.Component {
           let formData = card.data,
               stateVar;
           stateVar = {
-            dataJSON: {
-              card_data: formData,
-              configs: opt_config.data
-            },
+            dataJSON:formData,
             schemaJSON: schema.data,
             uiSchemaJSON: uiSchema.data,
             optionalConfigJSON: opt_config.data,
@@ -83,7 +77,7 @@ export default class EditProfileCard extends React.Component {
       case 1:
         this.setState((prevStep, prop) => {
           let dataJSON = prevStep.dataJSON;
-          dataJSON.card_data = formData;
+          dataJSON = formData;
           return {
             dataJSON: dataJSON
           }
@@ -107,7 +101,7 @@ export default class EditProfileCard extends React.Component {
   }
 
   renderSEO() {
-    let seo_blockquote = `<blockquote><h3>${this.state.dataJSON.card_data.data.headline}</h3><p>${this.state.dataJSON.card_data.data.description}</p></blockquote>`
+    let seo_blockquote = `<blockquote><h3>${this.state.dataJSON.data.headline}</h3><p>${this.state.dataJSON.data.description}</p></blockquote>`
     return seo_blockquote;
   }
 
@@ -126,10 +120,10 @@ export default class EditProfileCard extends React.Component {
   renderFormData() {
     switch(this.state.step) {
       case 1:
-        return this.state.dataJSON.card_data;
+        return this.state.dataJSON;
         break;
       case 2:
-        return this.state.dataJSON.configs;
+        return this.state.optionalConfigJSON;
         break;
     }
   }
