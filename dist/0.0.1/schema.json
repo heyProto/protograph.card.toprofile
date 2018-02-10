@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "data": {
+      "id": "/properties/data",
+      "properties": {
+        "image_url": {
+          "id": "/properties/data/properties/url",
+          "title": "Image URL",
+          "type": "string"
+        },
+        "title":{
+          "title": "Title",
+          "type": "string"
+        },
+        "description":{
+          "title": "Description",
+          "type": "string"
+        },
+        "details":{
+          "id":"/properties/data/properties/details",
+          "items":{
+            "properties": {
+              "key":{
+                "type":"string",
+                "title":"Detail Name",
+                "default":"Detail Name"
+              },
+              "value":{
+                "type":"string",
+                "title":"Detail Value",
+                "default":"Detail Value"
+              }
+            },
+            "title":"Detail",
+            "type":"object"
+          },
+          "title":"Details",
+          "type":"array"
+        }
+      },
+      "title":"Card Data",
+      "type": "object",
+      "required": [
+        "description"
+      ]
+    }
+  },
+  "type": "object"
+}

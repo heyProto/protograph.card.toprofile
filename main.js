@@ -1,0 +1,56 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ProfileCard from './src/js/Container.jsx';
+
+window.ProtoGraph = window.ProtoGraph || {};
+window.ProtoGraph.Card = window.ProtoGraph.Card || {};
+
+ProtoGraph.Card.toProfile = function () {
+  this.cardType = 'toProfileCard';
+}
+
+ProtoGraph.Card.toProfile.prototype.init = function (options) {
+  this.options = options;
+}
+
+ProtoGraph.Card.toProfile.prototype.getData = function (data) {
+  return this.containerInstance.exportData();
+}
+
+ProtoGraph.Card.toProfile.prototype.renderSevenCol= function (data) {
+  this.mode = '7_col';
+  this.render();
+}
+
+ProtoGraph.Card.toProfile.prototype.renderFourCol= function (data) {
+  this.mode = '4_col';
+  this.render();
+}
+
+ProtoGraph.Card.toProfile.prototype.renderThreeCol= function (data) {
+  this.mode = '3_col';
+  this.render();
+}
+
+ProtoGraph.Card.toProfile.prototype.renderTwoCol= function (data) {
+  this.mode = '2_col';
+  this.render();
+}
+
+ProtoGraph.Card.toProfile.prototype.render = function () {
+  ReactDOM.render(
+    <ProfileCard
+      dataURL={this.options.data_url}
+      selector={this.options.selector}
+      domain={this.options.domain}
+      schemaURL={this.options.schema_url}
+      optionalConfigURL={this.options.configuration_url}
+      optionalConfigSchemaURL={this.options.configuration_schema_url}
+      siteConfigURL={this.options.site_config_url}
+      clickCallback={this.options.onClickCallback}
+      mode={this.mode}
+      ref={(e) => {
+        this.containerInstance = this.containerInstance || e;
+      }} />,
+    this.options.selector);
+}
