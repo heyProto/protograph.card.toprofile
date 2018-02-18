@@ -86,12 +86,11 @@ export default class toProfileCard extends React.Component {
 
   multiLineTruncate(el) {
     let data = this.state.dataJSON.data,
-      border_style = this.state.siteConfigs.house_colour ? `1px solid ${this.state.siteConfigs.house_colour} !important` : undefined,
       wordArray = data.description.split(' '),
       props = this.props;
     while (el.scrollHeight > el.offsetHeight) {
       wordArray.pop();
-      el.innerHTML = wordArray.join(' ') + '...' + '<br><button id="read-more-button" class="protograph-read-more" style="color:' + this.state.siteConfigs.house_colour + ';border:' + border_style + '">Keep reading</button>';
+      el.innerHTML = wordArray.join(' ') + '...' + '<br><button id="read-more-button" class="protograph-read-more" >more</button>';
     }
     if (document.getElementById('read-more-button') !== null) {
       document.getElementById('read-more-button').addEventListener('click', function () {

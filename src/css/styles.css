@@ -66,14 +66,17 @@ body{
 }
 .protograph-read-more{
   width: 100px;
-  border-radius: 5px;
-  padding: 5px 0px;
   font-size: 12px;
-  transition: 0.2s ease-in-out;
   cursor: pointer;
+  background: transparent;
+  padding: 0px;
+  text-align: left;
+  color: #0366d6;
+  border: 0px;
 }
-.protograph-read-more:hover{
-  background: #fafafa !important;
+.protograph-read-more:focus {
+  border: 0px;
+  outline: 0px;
 }
 
 #ProtoScreenshot {
