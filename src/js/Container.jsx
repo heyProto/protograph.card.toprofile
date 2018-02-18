@@ -11,7 +11,8 @@ export default class toProfileCard extends React.Component {
       schemaJSON: undefined,
       domain: undefined,
       optionalConfigJSON: {},
-      optionalConfigSchemaJSON: undefined
+      optionalConfigSchemaJSON: undefined,
+      readMoreEnabled: false
     };
 
     if (this.props.dataJSON) {
@@ -76,7 +77,33 @@ export default class toProfileCard extends React.Component {
   }
 
   componentDidUpdate() {
+    console.log(this.props.readMoreEnabled, "asdasdasdasda")
+    if (!this.props.readMoreEnabled) {
+      let elem = document.querySelector('.proto-exp-text')
+      this.multiLineTruncate(elem)
+    }
+  }
 
+  multiLineTruncate(el) {
+    let data = this.state.dataJSON.data,
+      border_style = this.state.siteConfigs.house_colour ? `1px solid ${this.state.siteConfigs.house_colour} !important` : undefined,
+      wordArray = data.description.split(' '),
+      props = this.props;
+    while (el.scrollHeight > el.offsetHeight) {
+      wordArray.pop();
+      el.innerHTML = wordArray.join(' ') + '...' + '<br><button id="read-more-button" class="protograph-read-more" style="color:' + this.state.siteConfigs.house_colour + ';border:' + border_style + '">Keep reading</button>';
+    }
+    if (document.getElementById('read-more-button') !== null) {
+      document.getElementById('read-more-button').addEventListener('click', function () {
+        document.getElementById('read-more-button').style.display = 'none'
+        document.querySelector('.proto-exp-text').style.maxHeight = 'none';
+        document.querySelector('.proto-exp-text').style.marginBottom = '10px';
+        document.querySelector('.proto-exp-text').innerHTML = data.description;
+        if (typeof props.clickCallback === 'function') {
+          props.clickCallback();
+        }
+      })
+    }
   }
 
   exportData() {
@@ -102,7 +129,7 @@ export default class toProfileCard extends React.Component {
           <div className="proto-image-area">
             {data.image_url && <img src={data.image_url}/>}
           </div>
-          <p>{data.description}</p>
+          <p className="proto-exp-text">{data.description}</p>
           <div className="proto-profile-details">
             {
               data.details.map((data,i)=>{
@@ -135,7 +162,7 @@ export default class toProfileCard extends React.Component {
           <div className="proto-image-area">
             {data.image_url && <img src={data.image_url}/>}
           </div>
-          <p>{data.description}</p>
+          <p className="proto-exp-text">{data.description}</p>
           <div className="proto-profile-details">
             {
               data.details.map((data,i)=>{
@@ -168,7 +195,7 @@ export default class toProfileCard extends React.Component {
           <div className="proto-image-area">
             {data.image_url && <img src={data.image_url}/>}
           </div>
-          <p>{data.description}</p>
+          <p className="proto-exp-text">{data.description}</p>
           <div className="proto-profile-details">
             {
               data.details.map((data,i)=>{
@@ -201,7 +228,7 @@ export default class toProfileCard extends React.Component {
           <div className="proto-image-area">
             {data.image_url && <img src={data.image_url}/>}
           </div>
-          <p>{data.description}</p>
+          <p className="proto-exp-text">{data.description}</p>
           <div className="proto-profile-details">
             {
               data.details.map((data,i)=>{

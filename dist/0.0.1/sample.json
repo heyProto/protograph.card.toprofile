@@ -1,22 +1,23 @@
 {
   "data": {
-    "image_url": "https://d28sybaholn072.cloudfront.net/images/prototest/2e07a2a48175afa4/2492.jpeg",
-    "title": "Axis Bank",
-    "description": "Axis Bank Ltd is the third largest of the private-sector banks in India offering a comprehensive suite of financial products. The bank has its head office in Mumbai and Registered office in Ahmedabad. It has 3304 branches, 14,003 ATMs, and nine international offices. The bank employs over 55,000 people and had a market capitalisation of ₹1.28 trillion (US$20 billion) (as on March 31, 2017). It offers the entire spectrum of financial services large and mid-size corporates, SME, and retail businesses.",
+    "title": "Jindal Steel And Power Ltd",
+    "description": "Jindal Steel and Power Limited is an India-based steel producer. The Company's segments include Iron & Steel, Power and Other. The Other segment consists of aviation services and machinery division. The Company's product portfolio consists of steel product mix, construction solutions, and construction material and solutions. Its steel product mix category includes rails and head hardened rails, parallel flange beams and columns, angles and channels, plates, coils and wire rods. Its construction solutions category includes fabricated steel section, speedfloor, light gauge structures, insulated dry wall panel and Jindal Global Road Stabilizers (JGRS). Its construction material and solutions category includes Jindal Panther Cement, Fly-Ash Bricks and Light Weight Aggregate (LWA). It has an installed steel-making capacity of over 6.75 million tons per annum (MTPA); an installed power generation capacity of approximately 5,060 megawatts, and pellet-making capacity of over nine MTPA.",
     "details": [
       {
-        "key":"Type",
-        "value" : "Private Sector"
-      }
-      ,
+        "key": "ownership",
+        "value": "Private"
+      },
       {
-        "key":"Industry",
-        "value": "Banking, Financial Service"
-      }
-      ,
+        "key": "sector",
+        "value": "Metal, Metal Products & Mining"
+      },
       {
-        "key":"Website",
-        "value": "https://www.axisbank.com/"
+        "key": "website",
+        "value": "www.jindalsteelpower.com"
+      },
+      {
+        "key": "management",
+        "value": "Naveen  Jindal - Chairman\n Ravi  Uppal - Managing Director & Group CEO"
       }
     ]
   }

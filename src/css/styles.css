@@ -60,6 +60,21 @@ body{
 	color: #707175;
 	font-family: "cabin";
 }
+.proto-exp-text {
+  max-height: 100px;
+  overflow: hidden;
+}
+.protograph-read-more{
+  width: 100px;
+  border-radius: 5px;
+  padding: 5px 0px;
+  font-size: 12px;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+.protograph-read-more:hover{
+  background: #fafafa !important;
+}
 
 #ProtoScreenshot {
   width: 450px;
