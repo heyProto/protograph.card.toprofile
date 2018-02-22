@@ -230,9 +230,7 @@ export default class EditProfileCard extends React.Component {
                     mode={this.state.mode}
                     dataJSON={this.state.dataJSON}
                     domain={this.props.domain}
-                    schemaJSON={this.state.schemaJSON}
                     optionalConfigJSON={this.state.optionalConfigJSON}
-                    optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
                   />
                 </div>
               </div>
