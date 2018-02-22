@@ -44,6 +44,7 @@ ProtoGraph.Card.toProfile.prototype.render = function () {
       selector={this.options.selector}
       siteConfigURL={this.options.site_config_url}
       siteConfigs={this.options.site_configs}
+      clickCallback={this.options.onClickCallback}
       mode={this.mode}
       ref={(e) => {
         this.containerInstance = this.containerInstance || e;
