@@ -63,7 +63,6 @@ export default class toProfileCard extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props.readMoreEnabled, "asdasdasdasda")
     if (!this.props.readMoreEnabled) {
       let elem = document.querySelector('.proto-exp-text')
       this.multiLineTruncate(elem)
@@ -90,7 +89,6 @@ export default class toProfileCard extends React.Component {
       })
     }
   }
-
   exportData() {
     return this.props.selector.getBoundingClientRect();
   }

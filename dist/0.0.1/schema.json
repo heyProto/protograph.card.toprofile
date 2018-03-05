@@ -39,6 +39,12 @@
           },
           "title":"Details",
           "type":"array"
+        },
+        "section": {
+          "id": "/properties/data/properties/section",
+          "type": "string",
+          "title": "Section",
+          "default": ""
         }
       },
       "title":"Card Data",

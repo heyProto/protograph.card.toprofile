@@ -90,7 +90,9 @@ export default class EditProfileCard extends React.Component {
     switch(this.state.step) {
       case 1:
         if (typeof this.props.onPublishCallback === "function") {
-          this.setState({ publishing: true });
+          let dataJSON = this.state.dataJSON;
+          dataJSON.data.section = dataJSON.data.title;
+          this.setState({ publishing: true, dataJSON: dataJSON });
           let publishCallback = this.props.onPublishCallback();
           publishCallback.then((message) => {
             this.setState({ publishing: false });
