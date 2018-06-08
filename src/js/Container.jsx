@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import { render } from 'react-dom';
+import { all as axiosAll, get as axiosGet, spread as axiosSpread } from 'axios';
 import urlRegex from 'url-regex';
 export default class toProfileCard extends React.Component {
   constructor(props) {
@@ -8,7 +8,6 @@ export default class toProfileCard extends React.Component {
     let stateVar = {
       fetchingData: true,
       dataJSON: undefined,
-      optionalConfigJSON: {},
       readMoreEnabled: false,
       siteConfigs: this.props.siteConfigs
     };
@@ -28,25 +27,20 @@ export default class toProfileCard extends React.Component {
   componentDidMount() {
     if (this.state.fetchingData){
       let items_to_fetch = [
-        axios.get(this.props.dataURL)
+        axiosGet(this.props.dataURL)
       ];
 
       if (this.props.siteConfigURL) {
-        items_to_fetch.push(axios.get(this.props.siteConfigURL));
+        items_to_fetch.push(axiosGet(this.props.siteConfigURL));
       }
 
-      axios.all(items_to_fetch).then(axios.spread((card, site_configs) => {
+      axiosAll(items_to_fetch).then(axiosSpread((card, site_configs) => {
         let stateVar = {
           fetchingData: false,
           dataJSON: card.data,
-          optionalConfigJSON: {},
           siteConfigs: site_configs ? site_configs.data : this.state.siteConfigs
         };
 
-        stateVar.optionalConfigJSON.house_colour = stateVar.siteConfigs.house_colour;
-        stateVar.optionalConfigJSON.reverse_house_colour = stateVar.siteConfigs.reverse_house_colour;
-        stateVar.optionalConfigJSON.font_colour = stateVar.siteConfigs.font_colour;
-        stateVar.optionalConfigJSON.reverse_font_colour = stateVar.siteConfigs.reverse_font_colour;
         this.setState(stateVar);
       }));
     } else {
